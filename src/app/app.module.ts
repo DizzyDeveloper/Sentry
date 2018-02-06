@@ -3,14 +3,27 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { LandingLayoutComponent } from './_layout/landing/landing-layout/landing-layout.component';
+import { HomeLayoutComponent } from './_layout/home/home-layout/home-layout.component';
+import { RegisterComponent } from './components/register/register.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app.routing';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LandingLayoutComponent,
+    HomeLayoutComponent,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
