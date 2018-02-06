@@ -10,7 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -23,6 +23,7 @@ import { AppRoutingModule } from './app.routing';
   ],
   imports: [
     BrowserModule,
+    FlexLayoutModule,
     AppRoutingModule,
   ],
   providers: [],
