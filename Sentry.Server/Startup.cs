@@ -24,6 +24,7 @@ namespace Sentry.Server
             Configuration = configBuilder.Build();
 
             services.AddMvcCore();
+
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
