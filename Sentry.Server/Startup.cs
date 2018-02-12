@@ -3,8 +3,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Sentry.Server.Domain;
 using System.IO;
 
 namespace Sentry.Server
@@ -29,6 +31,8 @@ namespace Sentry.Server
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+            var connectionString = Configuration["ConnectionStrings:DefaultConnection"];
+            services.AddDbContext<SentryContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"], b => b.MigrationsAssembly("Sentry.Server")));
         }
 
         // ConfigureContainer is where you can register things directly

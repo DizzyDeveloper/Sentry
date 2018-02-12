@@ -51,5 +51,21 @@ namespace Sentry.Server.Domain.Entities
         /// The email address.
         /// </value>
         public string Email { get; set; }
+
+        /// <summary>
+        /// Gets or sets the password hash.
+        /// </summary>
+        /// <value>
+        /// The password hash.
+        /// </value>
+        public string PasswordHash { get; set; }
+
+        /// <summary>
+        /// Gets or sets the password salt.
+        /// </summary>
+        /// <value>
+        /// The password salt.
+        /// </value>
+        public string PasswordSalt { get; set; }
     }
 }
