@@ -1,7 +1,9 @@
-﻿namespace Sentry.Server.Services
+﻿using System.IdentityModel.Tokens.Jwt;
+
+namespace Sentry.Server.Services
 {
     public interface IAccountService
     {
-        string Authenticate(string email, string password);
+        JwtSecurityToken Authenticate(string email, string password);
     }
 }

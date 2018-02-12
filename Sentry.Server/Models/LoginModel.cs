@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 
 namespace Sentry.Server.Models
 {
     public class LoginModel
     {
-        public string email { get; set; }
+        [JsonProperty("email")]
+        public string Email { get; set; }
 
-        public string password { get; set; }
+        [JsonProperty("password")]
+        public string Password { get; set; }
     }
 }
