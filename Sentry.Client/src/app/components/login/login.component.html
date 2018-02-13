@@ -1,13 +1,17 @@
 <div fxLayout="row" fxLayoutAlign="center center">
     <div class="section">
         <div>
-            <input type="email" [(ngModel)]="email" placeholder="Email">
+            <mat-form-field>
+                <input matInput type="email" [(ngModel)]="email" placeholder="Email">
+            </mat-form-field>
         </div>
         <div>
-            <input type="password" [(ngModel)]="password" placeholder="Password">
+            <mat-form-field>
+                <input matInput type="password" [(ngModel)]="password" placeholder="Password">
+            </mat-form-field>
         </div>
         <div>
-            <button (click)="login()">Login</button>
+            <button (click)="login()" mat-raised-button>Login</button>
         </div>
         <div>
             <a routerLink="register">Register</a>
