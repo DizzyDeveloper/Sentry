@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Sentry.Server.Domain;
 using Sentry.Server.Services;
 using System;
@@ -40,8 +41,13 @@ namespace Sentry.Server
             // Create the container builder.
             var builder = new ContainerBuilder();
 
-            var connectionString = Configuration["ConnectionStrings:DefaultConnection"];            
-            services.AddDbContextPool<SentryContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"], b => b.MigrationsAssembly("Sentry.Server")));
+            
+
+            var connectionString = Configuration["ConnectionStrings:DefaultConnection"];
+            //services.AddDbContextPool<SentryContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"], b => b.MigrationsAssembly("Sentry.Server")));
+
+            services.AddDbContextPool<SentryContext>(options => options.UseInMemoryDatabase("SentryInMemoryDB"));
+
 
             builder.Populate(services);
 
@@ -60,8 +66,10 @@ namespace Sentry.Server
         }
         
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddDebug(LogLevel.Error);
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
