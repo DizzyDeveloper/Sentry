@@ -28,7 +28,9 @@ namespace Sentry.Server
 
             Configuration = configBuilder.Build();
 
-            services.AddMvcCore();
+            services
+                .AddMvcCore()
+                .AddJsonFormatters();
 
             services.AddSpaStaticFiles(configuration =>
             {

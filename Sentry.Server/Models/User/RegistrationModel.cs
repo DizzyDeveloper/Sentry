@@ -1,23 +1,12 @@
 ﻿using System;
 
-namespace Sentry.Server.Domain.Entities
+namespace Sentry.Server.Models.User
 {
-    public class User
+    /// <summary>
+    /// 
+    /// </summary>
+    public class RegistrationModel
     {
-        /// <summary>
-        /// Gets or sets the user identifier.
-        /// </summary>
-        /// <value>
-        /// The user identifier.
-        /// </value>
-        public string UserId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the first name.
-        /// </summary>
-        /// <value>
-        /// The first name.
-        /// </value>
         public string FirstName { get; set; }
 
         /// <summary>
@@ -45,19 +34,19 @@ namespace Sentry.Server.Domain.Entities
         public DateTime DateOfBirth { get; set; }
 
         /// <summary>
-        /// Gets or sets the email address.
+        /// Gets or sets the email.
         /// </summary>
         /// <value>
-        /// The email address.
+        /// The email.
         /// </value>
         public string Email { get; set; }
 
         /// <summary>
-        /// Gets or sets the password hash.
+        /// Gets or sets the password.
         /// </summary>
         /// <value>
-        /// The password hash.
+        /// The password.
         /// </value>
-        public string PasswordHash { get; set; }
+        public string Password { get; set; }
     }
 }

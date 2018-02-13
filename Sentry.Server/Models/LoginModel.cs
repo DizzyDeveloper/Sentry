@@ -4,10 +4,8 @@ namespace Sentry.Server.Models
 {
     public class LoginModel
     {
-        [JsonProperty("email")]
-        public string Email { get; set; }
+        public string email { get; set; }
 
-        [JsonProperty("password")]
-        public string Password { get; set; }
+        public string password { get; set; }
     }
 }
