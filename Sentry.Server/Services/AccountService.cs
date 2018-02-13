@@ -41,7 +41,7 @@ namespace Sentry.Server.Services
             {
                 var claims = new[]
                 {
-                    new Claim("uid", "500FC7B0-D6A5-44DF-83BD-BC2B42A3FCC1")
+                    new Claim("uid", user.UserIdentifier.ToString())
                 };
 
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(mConfiguration["Authentication:SecurityKey"]));

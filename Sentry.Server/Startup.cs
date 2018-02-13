@@ -40,7 +40,7 @@ namespace Sentry.Server
             // Create the container builder.
             var builder = new ContainerBuilder();
 
-            var connectionString = Configuration["ConnectionStrings:DefaultConnection"];
+            var connectionString = Configuration["ConnectionStrings:DefaultConnection"];            
             services.AddDbContextPool<SentryContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"], b => b.MigrationsAssembly("Sentry.Server")));
 
             builder.Populate(services);

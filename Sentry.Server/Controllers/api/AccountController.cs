@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Sentry.Server.Models;
+using Sentry.Server.Models.User;
 using Sentry.Server.Services;
 using System;
 using System.IdentityModel.Tokens.Jwt;
@@ -34,6 +35,19 @@ namespace Sentry.Server.Controllers.api
             {
                 token = new JwtSecurityTokenHandler().WriteToken(token)
             });      
-        }        
+        }
+
+        [HttpPost]
+        [Route("[action]")]
+        public IActionResult Register([FromBody] RegistrationModel registrationModel)
+        {
+            if (mAccountService.Register(registrationModel))
+            {
+                return Ok();
+            }
+
+            return BadRequest();
+        }
+          
     }
 }

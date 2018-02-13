@@ -9,6 +9,12 @@ namespace Sentry.Server.Domain
             : base(options)
         { }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>()
+                .HasAlternateKey(c => c.UserIdentifier);
+        }
+
         public DbSet<User> Users { get; set; }
     }
 }

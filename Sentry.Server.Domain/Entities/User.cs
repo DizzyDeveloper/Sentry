@@ -12,6 +12,8 @@ namespace Sentry.Server.Domain.Entities
         /// </value>
         public string UserId { get; set; }
 
+        public Guid UserIdentifier { get; set; }
+
         /// <summary>
         /// Gets or sets the first name.
         /// </summary>
@@ -58,6 +60,6 @@ namespace Sentry.Server.Domain.Entities
         /// <value>
         /// The password hash.
         /// </value>
-        public string PasswordHash { get; set; }
+        public string PasswordHash { get; set; }        
     }
 }

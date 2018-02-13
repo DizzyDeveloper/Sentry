@@ -1,4 +1,5 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+﻿using Sentry.Server.Models.User;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace Sentry.Server.Services
 {
@@ -6,6 +7,6 @@ namespace Sentry.Server.Services
     {
         JwtSecurityToken Authenticate(string email, string password);
 
-        bool Register(string password);
+        bool Register(RegistrationModel registrationModel);
     }
 }
