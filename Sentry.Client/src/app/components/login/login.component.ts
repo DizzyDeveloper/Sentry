@@ -10,12 +10,15 @@ export class LoginComponent implements OnInit {
 
   constructor(private accountService: AccountService) { }
 
+  email: string;
+  password: string;
+
   ngOnInit() {
   }
 
   login(): void {
     this.accountService
-    .login('email@address.com', 'password1')
+    .login(this.email, this.password)
     .subscribe(r => { console.log(r) });
   }
 }

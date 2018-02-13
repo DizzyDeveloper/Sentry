@@ -74,8 +74,12 @@ namespace Sentry.Server.Services
                     LastName = registrationModel.LastName.Trim(),
                     Email = registrationModel.Email.Trim(),
                     PasswordHash = passwordHash,
-                    DateOfBirth = registrationModel.DateOfBirth
+                    DateOfBirth = registrationModel.DateOfBirth,
+                    UserIdentifier = Guid.NewGuid()
                 };
+
+                mSentryContext.Users.Add(user);
+                mSentryContext.SaveChanges();
 
                 return true;
 

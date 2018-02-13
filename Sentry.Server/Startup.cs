@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
@@ -7,10 +8,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Sentry.Server.Domain;
 using Sentry.Server.Services;
 using System;
 using System.IO;
+using System.Text;
 
 namespace Sentry.Server
 {
@@ -22,6 +25,10 @@ namespace Sentry.Server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            services
+                .AddMvcCore()
+                .AddAuthorization()
+                .AddJsonFormatters();
 
             var configBuilder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -29,9 +36,6 @@ namespace Sentry.Server
 
             Configuration = configBuilder.Build();
 
-            services
-                .AddMvcCore()
-                .AddJsonFormatters();
 
             services.AddSpaStaticFiles(configuration =>
             {
@@ -48,6 +52,23 @@ namespace Sentry.Server
 
             services.AddDbContextPool<SentryContext>(options => options.UseInMemoryDatabase("SentryInMemoryDB"));
 
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = "yourdomain.com",
+                        ValidAudience = "yourdomain.com",
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Authentication:SecurityKey"]))
+                    };
+                });
+
+
+ 
 
             builder.Populate(services);
 
@@ -69,6 +90,8 @@ namespace Sentry.Server
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddDebug(LogLevel.Error);
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

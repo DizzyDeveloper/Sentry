@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace Sentry.Server.Models.User
 {
@@ -7,6 +8,7 @@ namespace Sentry.Server.Models.User
     /// </summary>
     public class RegistrationModel
     {
+        [JsonProperty("firstname")]
         public string FirstName { get; set; }
 
         /// <summary>
@@ -15,6 +17,7 @@ namespace Sentry.Server.Models.User
         /// <value>
         /// The name of the middle.
         /// </value>
+        [JsonProperty("middlename")]
         public string MiddleName { get; set; }
 
         /// <summary>
@@ -22,7 +25,8 @@ namespace Sentry.Server.Models.User
         /// </summary>
         /// <value>
         /// The last name.
-        /// </value>
+        /// </value>   
+        [JsonProperty("lastname")]
         public string LastName { get; set; }
 
         /// <summary>
@@ -31,6 +35,7 @@ namespace Sentry.Server.Models.User
         /// <value>
         /// The date of birth.
         /// </value>
+        [JsonProperty("dateOfBirth")]
         public DateTime DateOfBirth { get; set; }
 
         /// <summary>
@@ -39,6 +44,7 @@ namespace Sentry.Server.Models.User
         /// <value>
         /// The email.
         /// </value>
+        [JsonProperty("email")]
         public string Email { get; set; }
 
         /// <summary>
@@ -46,7 +52,8 @@ namespace Sentry.Server.Models.User
         /// </summary>
         /// <value>
         /// The password.
-        /// </value>
+        /// </value>        
+        [JsonProperty("password")]
         public string Password { get; set; }
     }
 }

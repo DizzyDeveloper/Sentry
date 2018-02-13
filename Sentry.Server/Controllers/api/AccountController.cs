@@ -1,12 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Sentry.Server.Models;
 using Sentry.Server.Models.User;
 using Sentry.Server.Services;
 using System;
 using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -23,6 +22,7 @@ namespace Sentry.Server.Controllers.api
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [Route("[action]")]        
         public IActionResult Login([FromBody] LoginModel model)
         {
@@ -38,6 +38,7 @@ namespace Sentry.Server.Controllers.api
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [Route("[action]")]
         public IActionResult Register([FromBody] RegistrationModel registrationModel)
         {
@@ -48,6 +49,16 @@ namespace Sentry.Server.Controllers.api
 
             return BadRequest();
         }
-          
+
+        [Authorize]
+        [HttpGet]        
+        [Route("[action]")]
+        public IActionResult Profile()
+        {
+            
+            return Ok();
+           
+        }
+
     }
 }

@@ -13,7 +13,7 @@ export class AccountService {
     return this.http.post('api/account/login', { email: email, password: password}, { observe: 'response' })
     .map( response => {       
       console.log(response);
-     // let token = obj["token"];
+     //let token = obj["token"];
      //sessionStorage.auth_token = token;
      
       return true 

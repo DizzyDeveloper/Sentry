@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { LandingLayoutComponent } from './_layout/landing/landing-layout/landing-layout.component';
@@ -27,7 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     FlexLayoutModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [AccountService],
   bootstrap: [AppComponent]
