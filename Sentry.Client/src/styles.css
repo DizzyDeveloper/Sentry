@@ -1,15 +1,35 @@
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
-
-body {
-    background-color: #362A2A;
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+html, body {
     margin: 0px;
+    height: 100%; 
+    font-family: 'Roboto', sans-serif;   
 }
 
-div.section {
-    padding: 16px;
-    background-color: white;
+body {
+    background-image: url("assets/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;   
+}
+
+.title {
+    margin-left:15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 26pt;
+    color: #14A098;
+    font-weight: 300;
+}
+
+header.site{
+    background-color:rgba(25, 24, 26, 0.8);
+}
+
+.pane {
+    padding: 10px;
+    background-color: #FEFFFF;
     border-width: 1px;
-    border-radius: 4px;
     border-style: solid;
-    border-color: white;
+    border-color: #FEFFFF;
+    box-shadow: 2px 2px 2px grey;
 }
