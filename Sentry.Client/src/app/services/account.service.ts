@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/map';
 import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Registration } from '../models/user/registration';
 
 @Injectable()
 export class AccountService {
@@ -18,6 +19,11 @@ export class AccountService {
      
       return true 
     });  
+  }
+
+  register(registration: Registration): Observable<boolean> {
+    return this.http.post('api/account/register', registration, { observe: 'response' })
+    .map( response => { return true }); 
   }
 
   logout(): void {
