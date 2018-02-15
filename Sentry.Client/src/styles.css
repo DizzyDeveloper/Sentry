@@ -26,10 +26,27 @@ header.site{
 }
 
 .pane {
-    padding: 10px;
+    width: 300px;
+}
+
+.pane .body{    
+    padding: 15px;
     background-color: #FEFFFF;
     border-width: 1px;
     border-style: solid;
-    border-color: #FEFFFF;
-    box-shadow: 2px 2px 2px grey;
+    border-color: #FEFFFF;    
+}
+
+.pane footer {
+    font-size: 10pt;
+    padding: 15px;
+    background-color: grey;
+    border-width: 1px;
+    border-style: solid;
+    border-color: grey;
+}
+
+input[type="email"],
+input[type="password"] {
+    min-width: 400px;
 }

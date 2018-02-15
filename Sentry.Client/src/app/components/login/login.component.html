@@ -1,13 +1,17 @@
 <div fxLayout="row" fxLayoutAlign="center center">
     <section fxLayout="column" class="pane">       
-        <header fxLayout="row" fxLayoutAlign="center center">Login</header>
-        <mat-form-field>
-            <input matInput type="email" [(ngModel)]="email" placeholder="Email">
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput type="password" [(ngModel)]="password" placeholder="Password">
-        </mat-form-field>
-        <button (click)="login()" mat-raised-button>Login</button>
-        <a routerLink="register">Register</a>
+        <mat-toolbar color="primary"><header fxLayout="row" fxFill fxLayoutAlign="center center">LOGIN</header></mat-toolbar>
+        <div class="body">
+            <form fxLayout="column" #loginForm="ngForm">
+                <mat-form-field>
+                    <input matInput type="email" name="email" [(ngModel)]="email" placeholder="Email" required>        
+                </mat-form-field>            
+                <mat-form-field>
+                    <input matInput type="password" name="password" [(ngModel)]="password" placeholder="Password" required>
+                </mat-form-field>
+                <button (click)="login()" color="primary" [disabled]="loginForm.invalid" mat-raised-button>Login</button>
+            </form>
+        </div>
+        <footer><div>Don't have an account? <a routerLink="register">Sign up here</a></div></footer>
     </section>
 </div>
