@@ -5,12 +5,35 @@
         <div fxFlex="50">
 
         </div>
-        <div fxFlex="50">
-          <input >  
-          <input >  
-          <input >  
-          <input >  
-        </div>
+        <form fxLayout="column" fxFlex="50" #registerForm="ngForm" fxLayoutAlign="start stretch">
+          <mat-form-field>
+            <input matInput name="firstname" [(ngModel)]="registration.firstname" placeholder="First Name" required>  
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput name="middlename" [(ngModel)]="registration.middlename" placeholder="Middle Name">  
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput name="lastname" [(ngModel)]="registration.lastname" placeholder="Last Name" required>  
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput name="dateOfBirth" [matDatepicker]="picker" [(ngModel)]="registration.dateOfBirth" placeholder="Date of Birth" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput name="email" [(ngModel)]="registration.email" placeholder="Email" required>  
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput name="confirmEmail" [(ngModel)]="registration.confirmEmail" placeholder="Confirm Email">  
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput name="password" [(ngModel)]="registration.password" placeholder="Password" required>  
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput name="confirmPassword" [(ngModel)]="registration.confirmPassword" placeholder="Confirm Password">  
+          </mat-form-field>
+          <button (click)="login()" [disabled]="!registerForm.valid" color="primary" mat-raised-button>Login</button>
+        </form> 
       </div>
     </div>
 </div>
