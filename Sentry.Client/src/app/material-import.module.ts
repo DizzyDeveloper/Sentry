@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { MatInputModule, MatButtonModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { MatInputModule, MatButtonModule, MatDatepickerModule, MatNativeDateModule, MatToolbarModule } from '@angular/material';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  imports: [ NoopAnimationsModule, MatInputModule, MatButtonModule, MatDatepickerModule, MatNativeDateModule ],
-  exports: [ MatInputModule, MatButtonModule, MatDatepickerModule, MatNativeDateModule ]  
+  imports: [ NoopAnimationsModule, MatInputModule, MatButtonModule, MatDatepickerModule, MatNativeDateModule, MatToolbarModule ],
+  exports: [ MatInputModule, MatButtonModule, MatDatepickerModule, MatNativeDateModule, MatToolbarModule ]  
 })
 
 export class MaterialImportModule { }

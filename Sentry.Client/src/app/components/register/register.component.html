@@ -1,7 +1,10 @@
 <div fxLayout="row" fxLayoutAlign="center center">
     <div fxLayout="column" fxFlex="50" class="pane" fxLayoutAlign="start stretch">
-      <header fxLayout="row" fxLayoutAlign="start center">REGISTER</header>
-      <div fxLayout="row" fxLayoutAlign="start stretch">
+      <mat-toolbar color="primary">
+        <header fxLayout="row" fxFill fxLayoutAlign="start center">REGISTER</header>
+      </mat-toolbar>
+      <div fxLayout="row" class="body" fxLayoutAlign="start stretch">
+        
         <div fxFlex="50">
 
         </div>
@@ -21,16 +24,16 @@
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
           <mat-form-field>
-            <input matInput name="email" [(ngModel)]="registration.email" placeholder="Email" required>  
+            <input matInput name="email" [(ngModel)]="registration.email" placeholder="Email" validateEqual="confirmEmail" reverse="true" required>  
           </mat-form-field>
           <mat-form-field>
-            <input matInput name="confirmEmail" [(ngModel)]="registration.confirmEmail" placeholder="Confirm Email">  
+            <input matInput name="confirmEmail" [(ngModel)]="registration.confirmEmail" validateEqual="email" placeholder="Confirm Email">  
           </mat-form-field>
           <mat-form-field>
-            <input matInput name="password" [(ngModel)]="registration.password" placeholder="Password" required>  
+            <input matInput name="password" [(ngModel)]="registration.password" placeholder="Password" validateEqual="confirmPassword" reverse="true" required>  
           </mat-form-field>
           <mat-form-field>
-            <input matInput name="confirmPassword" [(ngModel)]="registration.confirmPassword" placeholder="Confirm Password">  
+            <input matInput name="confirmPassword" [(ngModel)]="registration.confirmPassword" validateEqual="password" placeholder="Confirm Password">  
           </mat-form-field>
           <button (click)="register()" [disabled]="!registerForm.valid" color="primary" mat-raised-button>Register</button>
         </form> 

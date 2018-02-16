@@ -14,6 +14,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AccountService } from './services/account.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialImportModule } from './material-import.module';
+import { EqualValidator } from './validators/equalValidator';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MaterialImportModule } from './material-import.module';
     HomeLayoutComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    EqualValidator
   ],
   imports: [
     BrowserModule,
