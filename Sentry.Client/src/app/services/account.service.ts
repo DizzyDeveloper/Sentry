@@ -12,12 +12,15 @@ export class AccountService {
 
   login(email, password): Observable<boolean> {
     return this.http.post('api/account/login', { email: email, password: password}, { observe: 'response' })
-    .map( response => {       
-      console.log(response);
-     //let token = obj["token"];
-     //sessionStorage.auth_token = token;
+    .map( response => {      
+      
+      if(response.status === 200){
+        var token = response.body["token"];  
+        sessionStorage.setItem("auth_token", token);        
+        return true; 
+      }
+      return false;
      
-      return true 
     });  
   }
 
@@ -27,6 +30,14 @@ export class AccountService {
   }
 
   logout(): void {
+    sessionStorage.removeItem("auth_token");
+  }
 
+  isUserLoggedIn(): boolean{
+    if(sessionStorage.getItem("auth_token") == null){
+      return false;
+    }
+
+    return true;
   }
 }
