@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { LandingLayoutComponent } from './_layout/landing/landing-layout/landing-layout.component';
 import { HomeLayoutComponent } from './_layout/home/home-layout/home-layout.component';
 import { RegisterComponent } from './components/register/register.component';
-import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
@@ -14,6 +13,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AccountService } from './services/account.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialImportModule } from './material-import.module';
+import { HomeModule } from './modules/home/home.module';
 import { EqualValidator } from './validators/equalValidator';
 
 @NgModule({
@@ -22,8 +22,7 @@ import { EqualValidator } from './validators/equalValidator';
     LandingLayoutComponent,
     HomeLayoutComponent,
     LoginComponent,
-    RegisterComponent,
-    HomeComponent,
+    RegisterComponent,    
     EqualValidator
   ],
   imports: [
@@ -31,6 +30,7 @@ import { EqualValidator } from './validators/equalValidator';
     FlexLayoutModule,
     MaterialImportModule,
     AppRoutingModule,
+    HomeModule,    
     HttpClientModule,
     FormsModule
   ],
