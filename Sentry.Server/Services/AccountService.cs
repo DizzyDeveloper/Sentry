@@ -58,6 +58,25 @@ namespace Sentry.Server.Services
             return null;
         }
 
+        public ProfileInfoModel Profile(Guid userIndentifier)
+        {
+            var user = mSentryContext
+             .Users
+             .FirstOrDefault(p => p.UserIdentifier == userIndentifier);
+
+            if (user != null)
+            {
+                return new ProfileInfoModel()
+                {
+                    FirstName = user.FirstName,
+                    MiddleName = user.MiddleName,
+                    LastName = user.LastName
+                };
+            }
+
+            return null;
+        }
+
         public bool Register(RegistrationModel registrationModel)
         {
             try

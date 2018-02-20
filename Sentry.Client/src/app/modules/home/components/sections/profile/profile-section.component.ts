@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProfileInfo } from '../../../models/user/profileInfo';
+import { AccountService } from '../../../../../services/account.service';
 
 @Component({
   selector: 'profile-section',
@@ -7,11 +9,12 @@ import { Router } from '@angular/router';
 })
 export class ProfileSectionComponent implements OnInit {
 
-  constructor() { }
-
-  email: string;
-  password: string;
+  constructor(private accountService: AccountService) { }
+  profileInfo: ProfileInfo;
 
   ngOnInit() {
+    this.accountService
+    .getUserProfile()
+    .subscribe(result => this.profileInfo = result, error=>console.log(error));
   }  
 }

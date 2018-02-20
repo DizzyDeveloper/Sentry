@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Sentry.Server.Models;
@@ -6,6 +7,8 @@ using Sentry.Server.Models.User;
 using Sentry.Server.Services;
 using System;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Threading.Tasks;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -55,8 +58,18 @@ namespace Sentry.Server.Controllers.api
         [Route("[action]")]
         public IActionResult Profile()
         {
-            
-            return Ok();
+            var result = HttpContext.User.FindFirst("uid").Value;
+            Guid guid;
+
+            if (Guid.TryParse(result, out guid))
+            {
+                var profileInfo = mAccountService.Profile(guid);
+                if (profileInfo != null) {
+                    return Ok(profileInfo);                
+                }
+            }
+
+            return NotFound();
            
         }
 

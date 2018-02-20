@@ -4,11 +4,17 @@ import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/map';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Registration } from '../models/user/registration';
+import { ProfileInfo } from '../modules/home/models/user/profileInfo';
 
 @Injectable()
 export class AccountService {
 
+
   constructor(private http: HttpClient) { }
+
+  getUserProfile(): Observable<ProfileInfo> {
+    return this.http.get<ProfileInfo>("api/account/profile");
+  }
 
   login(email, password): Observable<boolean> {
     return this.http.post('api/account/login', { email: email, password: password}, { observe: 'response' })
@@ -34,7 +40,7 @@ export class AccountService {
   }
 
   isUserLoggedIn(): boolean{
-    if(sessionStorage.getItem("auth_token") == null){
+    if(sessionStorage.getItem("auth_token") === null){
       return false;
     }
 
