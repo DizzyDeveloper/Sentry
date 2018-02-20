@@ -39,6 +39,10 @@ export class AccountService {
     sessionStorage.removeItem("auth_token");
   }
 
+  getAuthToken(): string {
+    return sessionStorage.getItem("auth_token");
+  }
+
   isUserLoggedIn(): boolean{
     if(sessionStorage.getItem("auth_token") === null){
       return false;

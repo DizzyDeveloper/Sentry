@@ -15,6 +15,9 @@ export class ProfileSectionComponent implements OnInit {
   ngOnInit() {
     this.accountService
     .getUserProfile()
-    .subscribe(result => this.profileInfo = result, error=>console.log(error));
+    .subscribe(result => {
+      console.log(result);
+      this.profileInfo = result;
+    }, error=>console.log(error));
   }  
 }
